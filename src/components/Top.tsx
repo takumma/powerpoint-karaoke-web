@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -11,20 +11,26 @@ function Top() {
     <div className="App">
       <div className="App-header">
         <FormControl>
-          <InputLabel id="slideNum-select-label">slidenum</InputLabel>
+          <InputLabel id="slideNum-select-label">slideNum</InputLabel>
           <Select
             labelId="slideNum-select-label"
             value={slideNum}
+            options={SlideNumSelectList}
           >
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
           </Select>
         </FormControl>
         <Link to='/slide'>Start</Link>
       </div>
     </div>
   );
+}
+
+function SlideNumSelectList(): FC {
+  const numList: FC = [];
+  for(let i = 3; i < 21; i++) {
+    numList.push(i)
+  }
+  return numList;
 }
 
 export default Top;
