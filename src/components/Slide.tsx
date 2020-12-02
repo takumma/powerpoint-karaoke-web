@@ -13,4 +13,8 @@ function Slide() {
   );
 }
 
+function getSlidePictures(num: number) {
+  console.log(num.toString());
+}
+
 export default Slide;

@@ -1,20 +1,14 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 function Top() {
   return (
     <div className="App">
       <header className="App-header">
-        <Button variant="contained" color="primary">
-          Primary
-        </Button>
+        <Link to='/slide'>Start</Link>
       </header>
     </div>
   );
-}
-
-function getSlidePictures(num: number) {
-  console.log(num.toString());
 }
 
 export default Top;
