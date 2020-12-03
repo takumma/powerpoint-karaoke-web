@@ -4,17 +4,17 @@ import { Button } from '@material-ui/core';
 function Slide() {
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="App-header">
         <Button variant="contained" color="primary">
           Primary
         </Button>
-      </header>
+      </div>
     </div>
   );
 }
 
-function getSlidePictures(num: number) {
-  console.log(num.toString());
+async function getSlidePictures(num: number) {
+  
 }
 
 export default Slide;
