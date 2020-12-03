@@ -25,8 +25,8 @@ function Top() {
   );
 }
 
-function SlideNumSelectList(): FC {
-  const numList: FC = [];
+function SlideNumSelectList(): any[] {
+  const numList: any[] = [];
   for(let i = 3; i < 21; i++) {
     numList.push(<MenuItem value={i}>{i}</MenuItem>)
   }
