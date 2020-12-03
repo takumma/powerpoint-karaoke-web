@@ -4,17 +4,24 @@ import axios, {AxiosResponse} from 'axios';
 
 function Slide() {
 
-  const getSlidePictures = async (num: number) => {
+  const getSlidePictures = async function () {
+    const BASE_URL: string = process.env.REACT_APP_BASEURL!;
+    const ACCESS_KEY: string = process.env.REACT_APP_UNSPLASH_ACCESS_KEY!;
+
     await axios
-      .get('https://source.unsplash.com/category/nature/1024x768')
+      .get(BASE_URL + '/photos/random', {
+        headers: {
+          Authorization: "Client-ID " + ACCESS_KEY,
+        }
+      })
       .then((res:AxiosResponse<any>) => {
-        console.log(res.data);
-        return res.data;
+        console.log(res.data.urls.regular);
+        return res.data.urls.regular;
+      })
+      .catch((err) => {
+        console.log('error!');
       });
   }
-
-  const baseurl = process.env.REACT_APP_BASEURL;
-  console.log(process.env.REACT_APP_BASEURL);
 
   return (
     <div className="App">
@@ -22,9 +29,8 @@ function Slide() {
         <Button variant="contained" color="primary">
           Primary
         </Button>
+        <img src={getSlidePictures()}/>
       </div>
-      {baseurl}
-      <img src='https://source.unsplash.com/category/nature/1024x768'/>
     </div>
   );
 }
