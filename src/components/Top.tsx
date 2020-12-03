@@ -16,10 +16,9 @@ function Top() {
             labelId="slideNum-select-label"
             value={slideNum}
           >
-            {SlideNumSelectList}
+            {SlideNumSelectList()}
           </Select>
         </FormControl>
-        {SlideNumSelectList()}
         <Link to='/slide'>Start</Link>
       </div>
     </div>
@@ -31,7 +30,6 @@ function SlideNumSelectList(): FC {
   for(let i = 3; i < 21; i++) {
     numList.push(<MenuItem value={i}>{i}</MenuItem>)
   }
-  console.log(numList);
   return numList;
 }
 
