@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Button } from '@material-ui/core';
 import axios, {AxiosResponse} from 'axios';
 
 function Slide() {
+
+  const [img, setImg] = useState();
 
   const getSlidePictures = async function () {
     const BASE_URL: string = process.env.REACT_APP_BASEURL!;
@@ -16,12 +18,14 @@ function Slide() {
       })
       .then((res:AxiosResponse<any>) => {
         console.log(res.data.urls.regular);
-        return res.data.urls.regular;
+        setImg(res.data.urls.regular);
       })
       .catch((err) => {
         console.log('error!');
       });
   }
+
+  const getSlide = getSlidePictures();
 
   return (
     <div className="App">
@@ -29,7 +33,7 @@ function Slide() {
         <Button variant="contained" color="primary">
           Primary
         </Button>
-        <img src={getSlidePictures()}/>
+        <img src={img}/>
       </div>
     </div>
   );
