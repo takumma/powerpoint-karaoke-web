@@ -1,12 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Button } from '@material-ui/core';
 import axios, {AxiosResponse} from 'axios';
 
-function Slide() {
+interface State {
+  img: string;
+}
 
-  const [img, setImg] = useState();
+class Slide extends React.Component<{}, State> {
 
-  const getSlidePictures = async function () {
+  constructor(props) {
+    super(props);
+    this.state = {
+      img: '',
+    }
+    this.getSlidePictures();
+  }
+
+  async getSlidePictures() {
     const BASE_URL: string = process.env.REACT_APP_BASEURL!;
     const ACCESS_KEY: string = process.env.REACT_APP_UNSPLASH_ACCESS_KEY!;
 
@@ -18,25 +28,26 @@ function Slide() {
       })
       .then((res:AxiosResponse<any>) => {
         console.log(res.data.urls.regular);
-        setImg(res.data.urls.regular);
-      })
-      .catch((err) => {
-        console.log('error!');
+        this.setState({
+          img: res.data.urls.regular,
+        })
       });
   }
 
-  const getSlide = getSlidePictures();
+  render() {
 
-  return (
-    <div className="App">
-      <div className="App-header">
-        <Button variant="contained" color="primary">
-          Primary
-        </Button>
-        <img src={img}/>
+    return (
+      <div className="App">
+        <div className="App-header">
+          <Button variant="contained" color="primary">
+            Primary
+          </Button>
+          <img src={this.state.img}/>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
 }
 
 export default Slide;
