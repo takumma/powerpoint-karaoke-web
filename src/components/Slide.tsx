@@ -1,19 +1,24 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import axios, {AxiosResponse} from 'axios';
 
+interface Prop {
+  slideNum: number;
+}
+
 interface State {
+  slideNum: number;
   img: string;
 }
 
-class Slide extends React.Component<{}, State> {
+class Slide extends React.Component<Prop, State> {
 
   constructor(props) {
     super(props);
     this.state = {
+      slideNum: props.slideNum,
       img: '',
     }
-    this.getSlidePictures();
+    this.getSlidePictures().then();
   }
 
   async getSlidePictures() {
@@ -26,7 +31,7 @@ class Slide extends React.Component<{}, State> {
           Authorization: "Client-ID " + ACCESS_KEY,
         }
       })
-      .then((res:AxiosResponse<any>) => {
+      .then((res: AxiosResponse) => {
         this.setState({
           img: res.data.urls.regular,
         })
@@ -34,14 +39,10 @@ class Slide extends React.Component<{}, State> {
   }
 
   render() {
-
     return (
       <div className="App">
         <div className="App-header">
-          <Button variant="contained" color="primary">
-            Primary
-          </Button>
-          <img src={this.state.img}/>
+          <img src={this.state.img} alt="slide"/>
         </div>
       </div>
     );
