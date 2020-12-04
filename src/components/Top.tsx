@@ -1,28 +1,32 @@
-import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-function Top() {
-  const slideNum = 3;
-  return (
-    <div className="App">
-      <div className="App-header">
-        <FormControl>
-          <InputLabel id="slideNum-select-label">slideNum</InputLabel>
-          <Select
-            labelId="slideNum-select-label"
-            value={slideNum}
-          >
-            {SlideNumSelectList()}
-          </Select>
-        </FormControl>
-        <Link to='/slide'>Start</Link>
+class Top extends React.Component {
+  render() {
+    const slideNum = 3;
+
+    return (
+      <div className="App">
+        <div className="App-header">
+          <FormControl>
+            <InputLabel id="slideNum-select-label">slideNum</InputLabel>
+            <Select
+              labelId="slideNum-select-label"
+              value={slideNum}
+            >
+              {SlideNumSelectList()}
+            </Select>
+          </FormControl>
+          <Link to='/slide' >Start</Link>
+          {/*<Button onClick={() => this.props.history.push('/slide')}>Start</Button>*/}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 function SlideNumSelectList(): any[] {

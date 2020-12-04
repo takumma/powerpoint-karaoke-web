@@ -27,7 +27,6 @@ class Slide extends React.Component<{}, State> {
         }
       })
       .then((res:AxiosResponse<any>) => {
-        console.log(res.data.urls.regular);
         this.setState({
           img: res.data.urls.regular,
         })
