@@ -31,8 +31,9 @@ class Slide extends Component<RouteComponentProps, State> {
       })
       .then((res: AxiosResponse) => {
         this.setState({
-          img: res.data.urls.regular,
+          img: res.data.urls.raw + '&w=' + window.innerWidth.toString(),
         })
+        console.log(this.state.img);
       });
   }
 
