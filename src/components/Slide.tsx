@@ -1,21 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 import axios, {AxiosResponse} from 'axios';
-
-interface Prop {
-  slideNum: number;
-}
+import { RouteComponentProps } from 'react-router-dom';
 
 interface State {
   slideNum: number;
   img: string;
 }
 
-class Slide extends React.Component<Prop, State> {
+class Slide extends Component<RouteComponentProps, State> {
 
   constructor(props) {
     super(props);
+    console.log(this.props.location.state.slideNum);
     this.state = {
-      slideNum: props.slideNum,
+      slideNum: 0,
       img: '',
     }
     this.getSlidePictures().then();
