@@ -25,7 +25,6 @@ class Top extends React.Component<{}, State> {
   }
 
   render() {
-    const slideNum = 3;
     const numList: Array<number> = Array(18).fill(0).map((v,i) => i + 3);
 
     return (
@@ -36,7 +35,7 @@ class Top extends React.Component<{}, State> {
             <Select
               labelId="slideNum-select-label"
               value={this.state.slideNum}
-              // onChange={event => this.handleChange(event)}
+              onChange={event => this.handleChange(event)}
             >
               {numList.map((num) => (
                 <MenuItem key={num} value={num}>
@@ -48,7 +47,7 @@ class Top extends React.Component<{}, State> {
           <Link to={{
             pathname: '/slide',
             state: {
-              slideNum: slideNum,
+              slideNum: this.state.slideNum,
             }
           }}>
             <Button>Start</Button>
