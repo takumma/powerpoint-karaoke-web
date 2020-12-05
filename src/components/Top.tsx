@@ -7,6 +7,19 @@ import Select from '@material-ui/core/Select';
 import { Button } from '@material-ui/core';
 
 class Top extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      slideNum: 3,
+    }
+  }
+
+  handleChange (event: any) {
+    this.setState({
+      slideNum: event.target.value as number,
+    })
+  }
+
   render() {
     const slideNum = 3;
 
@@ -17,7 +30,7 @@ class Top extends React.Component {
             <InputLabel id="slideNum-select-label">slideNum</InputLabel>
             <Select
               labelId="slideNum-select-label"
-              value={slideNum}
+              onChange={event => this.handleChange(event)}
             >
               {SlideNumSelectList()}
             </Select>
@@ -39,7 +52,7 @@ class Top extends React.Component {
 function SlideNumSelectList(): any[] {
   const numList: any[] = [];
   for(let i = 3; i < 21; i++) {
-    numList.push(<MenuItem value={i}>{i}</MenuItem>)
+    numList.push(<MenuItem value={i} key={i}>{i}</MenuItem>)
   }
   return numList;
 }
