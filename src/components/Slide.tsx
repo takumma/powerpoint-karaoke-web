@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios, {AxiosResponse} from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
+import MenuItem from "@material-ui/core/MenuItem";
+import {ListItemText} from "@material-ui/core";
 
 interface State {
   slideNum: number;
@@ -48,7 +50,9 @@ class Slide extends Component<RouteComponentProps, State> {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={this.state.imgs[0]} alt="slide"/>
+          {this.state.imgs.map((img) => (
+            <img src={img} alt="slide"/>
+          ))}
         </div>
       </div>
     );
