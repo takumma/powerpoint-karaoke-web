@@ -4,9 +4,13 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { Button } from '@material-ui/core';
+import {Button, ListItemText} from '@material-ui/core';
 
-class Top extends React.Component {
+interface State {
+  slideNum: number,
+}
+
+class Top extends React.Component<{}, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,6 +26,7 @@ class Top extends React.Component {
 
   render() {
     const slideNum = 3;
+    const numList: Array<number> = Array(18).fill(0).map((v,i) => i + 3);
 
     return (
       <div className="App">
@@ -30,9 +35,14 @@ class Top extends React.Component {
             <InputLabel id="slideNum-select-label">slideNum</InputLabel>
             <Select
               labelId="slideNum-select-label"
-              onChange={event => this.handleChange(event)}
+              value={this.state.slideNum}
+              // onChange={event => this.handleChange(event)}
             >
-              {SlideNumSelectList()}
+              {numList.map((num) => (
+                <MenuItem key={num} value={num}>
+                  <ListItemText primary={num} />
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
           <Link to={{
@@ -47,14 +57,6 @@ class Top extends React.Component {
       </div>
     );
   }
-}
-
-function SlideNumSelectList(): any[] {
-  const numList: any[] = [];
-  for(let i = 3; i < 21; i++) {
-    numList.push(<MenuItem value={i} key={i}>{i}</MenuItem>)
-  }
-  return numList;
 }
 
 export default Top;
