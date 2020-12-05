@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import axios, {AxiosResponse} from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
-import MenuItem from "@material-ui/core/MenuItem";
-import {ListItemText} from "@material-ui/core";
 
 interface State {
   slideNum: number;
-  imgs: string[];
+  images: string[];
 }
 
 class Slide extends Component<RouteComponentProps, State> {
@@ -15,7 +13,7 @@ class Slide extends Component<RouteComponentProps, State> {
     super(props);
     this.state = {
       slideNum: this.props.location.state.slideNum,
-      imgs: [],
+      images: [],
     }
     this.getSlidePictures().then();
   }
@@ -33,15 +31,15 @@ class Slide extends Component<RouteComponentProps, State> {
         }
       })
       .then((res: AxiosResponse) => {
-        const datas: Array<any> = res.data;
         const imgs: string[] = [];
         const windowWidth: string = window.innerWidth.toString();
+        const windowHeight: string = window.innerHeight.toString();
 
         res.data.forEach((d) => {
-          imgs.push(d.urls.raw + '&w=' + windowWidth);
+          imgs.push(d.urls.raw + '&fit-max&w=' + windowWidth + '&h=' + windowHeight);
         })
         this.setState({
-          imgs: imgs,
+          images: imgs,
         })
       });
   }
@@ -50,7 +48,7 @@ class Slide extends Component<RouteComponentProps, State> {
     return (
       <div className="App">
         <div className="App-header">
-          {this.state.imgs.map((img) => (
+          {this.state.images.map((img) => (
             <img src={img} alt="slide"/>
           ))}
         </div>
