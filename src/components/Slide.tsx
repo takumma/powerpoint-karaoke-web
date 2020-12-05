@@ -4,17 +4,16 @@ import { RouteComponentProps } from 'react-router-dom';
 
 interface State {
   slideNum: number;
-  img: string;
+  imgs: string[];
 }
 
 class Slide extends Component<RouteComponentProps, State> {
 
   constructor(props) {
     super(props);
-    console.log(this.props.location.state.slideNum);
     this.state = {
-      slideNum: 0,
-      img: '',
+      slideNum: this.props.location.state.slideNum,
+      imgs: [],
     }
     this.getSlidePictures().then();
   }
@@ -23,17 +22,25 @@ class Slide extends Component<RouteComponentProps, State> {
     const BASE_URL: string = process.env.REACT_APP_BASEURL!;
     const ACCESS_KEY: string = process.env.REACT_APP_UNSPLASH_ACCESS_KEY!;
 
+    const url = BASE_URL + '/photos/random?count=' + this.state.slideNum;
+
     await axios
-      .get(BASE_URL + '/photos/random', {
+      .get(url, {
         headers: {
           Authorization: "Client-ID " + ACCESS_KEY,
         }
       })
       .then((res: AxiosResponse) => {
-        this.setState({
-          img: res.data.urls.raw + '&w=' + window.innerWidth.toString(),
+        const datas: Array<any> = res.data;
+        const imgs: string[] = [];
+        const windowWidth: string = window.innerWidth.toString();
+
+        res.data.forEach((d) => {
+          imgs.push(d.urls.raw + '&w=' + windowWidth);
         })
-        console.log(this.state.img);
+        this.setState({
+          imgs: imgs,
+        })
       });
   }
 
@@ -41,7 +48,7 @@ class Slide extends Component<RouteComponentProps, State> {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={this.state.img} alt="slide"/>
+          <img src={this.state.imgs[0]} alt="slide"/>
         </div>
       </div>
     );
