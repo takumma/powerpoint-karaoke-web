@@ -4,13 +4,22 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import {Button, ListItemText} from '@material-ui/core';
+import {Button, ListItemText, Typography} from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
 
 interface State {
   slideNum: number,
 }
 
-class Top extends React.Component<{}, State> {
+interface Props extends WithStyles<typeof styles>{}
+
+const styles = theme => createStyles({
+  btn: {
+    backgroundColor: "red"
+  }
+});
+
+class Top extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,9 +35,13 @@ class Top extends React.Component<{}, State> {
 
   render() {
     const numList: Array<number> = Array(18).fill(0).map((v,i) => i + 3);
+    const { classes } = this.props;
 
     return (
       <div className="App-container">
+        <Typography variant="h2" component="h2">
+          PowerPoint Karaoke
+        </Typography>
         <FormControl>
           <InputLabel id="slideNum-select-label">slideNum</InputLabel>
           <Select
@@ -46,8 +59,8 @@ class Top extends React.Component<{}, State> {
         <Button
           variant="contained"
           color="primary"
-          sx={{ py: 5 }}
           component={Link}
+          className={classes.btn}
           to={{
             pathname: '/slide',
             state: {
@@ -62,4 +75,4 @@ class Top extends React.Component<{}, State> {
   }
 }
 
-export default Top;
+export default withStyles(styles, { withTheme: true })(Top);
