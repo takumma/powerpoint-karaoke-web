@@ -6,6 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {Button, ListItemText, Typography} from '@material-ui/core';
 import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
+import {Slideshow} from "@material-ui/icons";
 
 interface State {
   slideNum: number,
@@ -14,8 +15,14 @@ interface State {
 interface Props extends WithStyles<typeof styles>{}
 
 const styles = theme => createStyles({
+  title: {
+    marginBottom: theme.spacing(8),
+  },
   btn: {
-    backgroundColor: "red"
+    margin: theme.spacing(8),
+  },
+  btnIcon: {
+    marginRight: theme.spacing(1),
   }
 });
 
@@ -39,7 +46,11 @@ class Top extends React.Component<Props, State> {
 
     return (
       <div className="App-container">
-        <Typography variant="h2" component="h2">
+        <Typography
+          variant="h2"
+          component="h2"
+          className={classes.title}
+        >
           PowerPoint Karaoke
         </Typography>
         <FormControl>
@@ -68,6 +79,7 @@ class Top extends React.Component<Props, State> {
             }
           }}
         >
+          <Slideshow className={classes.btnIcon}/>
           Start
         </Button>
       </div>
