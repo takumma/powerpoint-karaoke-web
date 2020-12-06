@@ -44,14 +44,19 @@ class Top extends React.Component<{}, State> {
               ))}
             </Select>
           </FormControl>
-          <Link to={{
-            pathname: '/slide',
-            state: {
-              slideNum: this.state.slideNum,
-            }
-          }}>
-            <Button>Start</Button>
-          </Link>
+          <Button
+            variant="contained"
+            color="primary"
+            component={Link}
+            to={{
+              pathname: '/slide',
+              state: {
+                slideNum: this.state.slideNum,
+              }
+            }}
+          >
+            Start
+          </Button>
         </div>
       </div>
     );
