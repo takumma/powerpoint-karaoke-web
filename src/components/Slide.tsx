@@ -36,7 +36,7 @@ class Slide extends Component<RouteComponentProps, State> {
         const windowHeight: string = window.innerHeight.toString();
 
         res.data.forEach((d) => {
-          imgs.push(d.urls.raw + '&fit-max&w=' + windowWidth + '&h=' + windowHeight);
+          imgs.push(d.urls.raw + '&fit=max&w=' + windowWidth + '&h=' + windowHeight);
         })
         this.setState({
           images: imgs,
@@ -44,9 +44,13 @@ class Slide extends Component<RouteComponentProps, State> {
       });
   }
 
+  keyDown(event: any) {
+    console.log('keyDowned');
+  }
+
   render() {
     return (
-      <div className="App">
+      <div className="App" onKeyDown={(e) => this.keyDown(e)} tabIndex={0}>
         <div className="App-header">
           {this.state.images.map((img) => (
             <img src={img} alt="slide"/>
