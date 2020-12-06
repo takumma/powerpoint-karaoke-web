@@ -5,6 +5,7 @@ import { RouteComponentProps } from 'react-router-dom';
 interface State {
   slideNum: number;
   images: string[];
+  page: number;
 }
 
 class Slide extends Component<RouteComponentProps, State> {
@@ -14,6 +15,7 @@ class Slide extends Component<RouteComponentProps, State> {
     this.state = {
       slideNum: this.props.location.state.slideNum,
       images: [],
+      page: 0,
     }
     this.getSlidePictures().then();
   }
@@ -46,12 +48,20 @@ class Slide extends Component<RouteComponentProps, State> {
 
   keyDown(event: any) {
     if ([32, 39].includes(event.keyCode)) {
-      console.log('Next');
+      this.setState({
+        page: this.state.page + 1,
+      })
     }
 
     if (event.keyCode === 37) {
-      console.log('Back');
+      this.setState({
+        page: this.state.page - 1,
+      })
     }
+  }
+
+  nowSlide(): string {
+    return this.state.images[this.state.page];
   }
 
   render() {
@@ -63,9 +73,7 @@ class Slide extends Component<RouteComponentProps, State> {
         ref="key"
       >
         <div className="App-header">
-          {this.state.images.map((img) => (
-            <img src={img} alt="slide"/>
-          ))}
+          <img src={this.nowSlide()} alt="slide"/>
         </div>
       </div>
     );
