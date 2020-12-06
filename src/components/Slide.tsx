@@ -45,12 +45,23 @@ class Slide extends Component<RouteComponentProps, State> {
   }
 
   keyDown(event: any) {
-    console.log('keyDowned');
+    if ([32, 39].includes(event.keyCode)) {
+      console.log('Next');
+    }
+
+    if (event.keyCode === 37) {
+      console.log('Back');
+    }
   }
 
   render() {
     return (
-      <div className="App" onKeyDown={(e) => this.keyDown(e)} tabIndex={0}>
+      <div
+        className="App"
+        onKeyDown={(e) => this.keyDown(e)}
+        tabIndex={0}
+        ref="key"
+      >
         <div className="App-header">
           {this.state.images.map((img) => (
             <img src={img} alt="slide"/>
