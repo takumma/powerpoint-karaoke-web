@@ -67,14 +67,12 @@ class Slide extends Component<RouteComponentProps, State> {
   render() {
     return (
       <div
-        className="App"
+        className="App-container"
         onKeyDown={(e) => this.keyDown(e)}
         tabIndex={0}
         ref="key"
       >
-        <div className="App-header">
-          <img src={this.nowSlide()} alt="slide"/>
-        </div>
+        <img src={this.nowSlide()} alt="slide"/>
       </div>
     );
   }

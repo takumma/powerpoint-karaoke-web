@@ -28,36 +28,35 @@ class Top extends React.Component<{}, State> {
     const numList: Array<number> = Array(18).fill(0).map((v,i) => i + 3);
 
     return (
-      <div className="App">
-        <div className="App-header">
-          <FormControl>
-            <InputLabel id="slideNum-select-label">slideNum</InputLabel>
-            <Select
-              labelId="slideNum-select-label"
-              value={this.state.slideNum}
-              onChange={event => this.handleChange(event)}
-            >
-              {numList.map((num) => (
-                <MenuItem key={num} value={num}>
-                  <ListItemText primary={num} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <Button
-            variant="contained"
-            color="primary"
-            component={Link}
-            to={{
-              pathname: '/slide',
-              state: {
-                slideNum: this.state.slideNum,
-              }
-            }}
+      <div className="App-container">
+        <FormControl>
+          <InputLabel id="slideNum-select-label">slideNum</InputLabel>
+          <Select
+            labelId="slideNum-select-label"
+            value={this.state.slideNum}
+            onChange={event => this.handleChange(event)}
           >
-            Start
-          </Button>
-        </div>
+            {numList.map((num) => (
+              <MenuItem key={num} value={num}>
+                <ListItemText primary={num} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{ py: 5 }}
+          component={Link}
+          to={{
+            pathname: '/slide',
+            state: {
+              slideNum: this.state.slideNum,
+            }
+          }}
+        >
+          Start
+        </Button>
       </div>
     );
   }
