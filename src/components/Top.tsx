@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import {Button, Grid, ListItemText, Typography} from '@material-ui/core';
+import {Button, Divider, Grid, ListItemText, Typography} from '@material-ui/core';
 import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
 import {Slideshow} from "@material-ui/icons";
 
@@ -14,22 +14,20 @@ interface State {
 interface Props extends WithStyles<typeof styles>{}
 
 const styles = theme => createStyles({
-  title: {
+  subtitle: {
     marginBottom: theme.spacing(8),
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    fontWeight: 500,
+    fontSize: "0.875rem",
+    lineHeight: 1.75,
+    textTransform: "uppercase",
+    letterSpacing: theme.spacing(2)
   },
   btn: {
     margin: theme.spacing(8),
   },
   btnIcon: {
     marginRight: theme.spacing(1),
-  },
-  btnText: {
-    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-    fontWeight: 500,
-    fontSize: "0.875rem",
-    lineHeight: 1.75,
-    letterSpacing: "0.02857em",
-    textTransform: "uppercase",
   },
   gridItem: {
     marginRight: theme.spacing(1),
@@ -51,17 +49,24 @@ class Top extends React.Component<Props, State> {
     })
   }
 
+  itemText(num: number): string {
+    return num.toString().replace( /[0-9]/g, (s) =>  {
+      return String.fromCharCode(s.charCodeAt(0) + 65248);
+    });
+  }
+
   render() {
     const numList: Array<number> = Array(18).fill(0).map((v,i) => i + 3);
     const { classes } = this.props;
 
     return (
       <div className="App-container">
-        <Typography
-          variant="h2"
-          className={classes.title}
-        >
+        <Typography variant="h2">
           パワポカラオケ
+          <Divider />
+        </Typography>
+        <Typography className={classes.subtitle}>
+          power point karaoke
         </Typography>
         <Grid
           container
@@ -83,7 +88,7 @@ class Top extends React.Component<Props, State> {
               >
                 {numList.map((num) => (
                   <MenuItem key={num} value={num}>
-                    <ListItemText primary={num}/>
+                    <ListItemText primary={this.itemText(num)}/>
                   </MenuItem>
                 ))}
               </Select>
@@ -108,7 +113,7 @@ class Top extends React.Component<Props, State> {
           }}
         >
           <Slideshow className={classes.btnIcon}/>
-          <span className={classes.btnText}>Start</span>
+          スタート！
         </Button>
       </div>
     );
