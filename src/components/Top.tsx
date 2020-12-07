@@ -51,7 +51,13 @@ class Top extends React.Component<Props, State> {
           component="h2"
           className={classes.title}
         >
-          PowerPoint Karaoke
+          パワポカラオケ
+        </Typography>
+        <Typography
+          variant="h4"
+          component="h4"
+        >
+          スライドの枚数
         </Typography>
         <FormControl>
           <InputLabel id="slideNum-select-label">slideNum</InputLabel>
