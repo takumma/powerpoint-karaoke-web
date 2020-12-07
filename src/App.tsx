@@ -16,6 +16,9 @@ const theme = createMuiTheme({
       // This is green.A700 as hex.
       main: lightBlue[600],
     },
+  },
+  typography: {
+    fontFamily: "'Kosugi Maru'",
   }
 });
 
