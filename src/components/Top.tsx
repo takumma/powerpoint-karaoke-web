@@ -1,10 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import {Button, ListItemText, Typography} from '@material-ui/core';
+import {Button, Grid, ListItemText, Typography} from '@material-ui/core';
 import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
 import {Slideshow} from "@material-ui/icons";
 
@@ -31,6 +30,10 @@ const styles = theme => createStyles({
     lineHeight: 1.75,
     letterSpacing: "0.02857em",
     textTransform: "uppercase",
+  },
+  gridItem: {
+    marginRight: theme.spacing(1),
+    marginLeft: theme.spacing(1)
   }
 });
 
@@ -56,31 +59,42 @@ class Top extends React.Component<Props, State> {
       <div className="App-container">
         <Typography
           variant="h2"
-          component="h2"
           className={classes.title}
         >
           パワポカラオケ
         </Typography>
-        <Typography
-          variant="h4"
-          component="h4"
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
         >
-          スライドの枚数
-        </Typography>
-        <FormControl>
-          <InputLabel id="slideNum-select-label">slideNum</InputLabel>
-          <Select
-            labelId="slideNum-select-label"
-            value={this.state.slideNum}
-            onChange={event => this.handleChange(event)}
-          >
-            {numList.map((num) => (
-              <MenuItem key={num} value={num}>
-                <ListItemText primary={num} />
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+          <Grid>
+            <Typography variant="h6">
+              スライドの枚数
+            </Typography>
+          </Grid>
+          <Grid className={classes.gridItem}>
+            <FormControl>
+              <Select
+                labelId="slideNum-select-label"
+                value={this.state.slideNum}
+                onChange={event => this.handleChange(event)}
+              >
+                {numList.map((num) => (
+                  <MenuItem key={num} value={num}>
+                    <ListItemText primary={num}/>
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid>
+            <Typography variant="h6">
+              枚
+            </Typography>
+          </Grid>
+        </Grid>
         <Button
           variant="contained"
           color="primary"
