@@ -18,7 +18,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: "'Kosugi Maru'",
+    fontFamily: "'Kosugi Maru', sans-serif",
   }
 });
 

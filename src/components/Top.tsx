@@ -23,6 +23,14 @@ const styles = theme => createStyles({
   },
   btnIcon: {
     marginRight: theme.spacing(1),
+  },
+  btnText: {
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    fontWeight: 500,
+    fontSize: "0.875rem",
+    lineHeight: 1.75,
+    letterSpacing: "0.02857em",
+    textTransform: "uppercase",
   }
 });
 
@@ -86,7 +94,7 @@ class Top extends React.Component<Props, State> {
           }}
         >
           <Slideshow className={classes.btnIcon}/>
-          Start
+          <span className={classes.btnText}>Start</span>
         </Button>
       </div>
     );
