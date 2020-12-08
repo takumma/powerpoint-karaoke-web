@@ -50,13 +50,13 @@ class Slide extends Component<RouteComponentProps, State> {
   }
 
   keyDown(event: any) {
-    if ([32, 39].includes(event.keyCode)) {
+    if ([32, 39].includes(event.keyCode) && this.state.page !== this.state.images.length - 1) {
       this.setState({
         page: this.state.page + 1,
       })
     }
 
-    if (event.keyCode === 37) {
+    if (event.keyCode === 37 && this.state.page !== 0) {
       this.setState({
         page: this.state.page - 1,
       })
