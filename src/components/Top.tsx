@@ -47,7 +47,6 @@ class Top extends React.Component<RouteComponentProps<Props>, State> {
       slideNum: 3,
       isError: this.props.location.state !== undefined,
     }
-    console.log(this.props)
   }
 
   handleChange (event: any) {

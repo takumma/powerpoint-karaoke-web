@@ -23,8 +23,9 @@ class Slide extends Component<RouteComponentProps, State> {
   async getSlidePictures() {
     const BASE_URL: string = process.env.REACT_APP_BASEURL!;
     const ACCESS_KEY: string = process.env.REACT_APP_UNSPLASH_ACCESS_KEY!;
-
     const url = BASE_URL + '/photos/random?count=' + this.state.slideNum;
+
+    const imageUrls: string[] = [];
 
     await axios
       .get(url, {
@@ -33,24 +34,28 @@ class Slide extends Component<RouteComponentProps, State> {
         }
       })
       .then((res: AxiosResponse) => {
-        const images: string[] = [];
         const windowWidth: string = window.innerWidth.toString();
         const windowHeight: string = window.innerHeight.toString();
 
         res.data.forEach((d) => {
-          images.push(d.urls.raw + '&fit=max&w=' + windowWidth + '&h=' + windowHeight);
-        })
+          imageUrls.push(d.urls.raw + '&fit=max&w=' + windowWidth + '&h=' + windowHeight);
+        });
         this.setState({
-          images: images,
+          images: imageUrls
         })
       },
       () => {
         this.props.history.push('/', {isError: true});
       });
+
+    imageUrls.forEach(imageUrl => {
+      const img = new Image();
+      img.src = imageUrl;
+    });
   }
 
   keyDown(event: any) {
-    if ([32, 39].includes(event.keyCode) && this.state.page !== this.state.images.length - 1) {
+    if ([32, 39].includes(event.keyCode) && this.state.page < this.state.images.length - 1) {
       this.setState({
         page: this.state.page + 1,
       })
