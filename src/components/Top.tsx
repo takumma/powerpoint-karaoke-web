@@ -15,7 +15,7 @@ interface Props extends WithStyles<typeof styles>{}
 
 const styles = theme => createStyles({
   subtitle: {
-    marginBottom: theme.spacing(8),
+    marginBottom: theme.spacing(4),
     fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
     fontWeight: 500,
     fontSize: "0.875rem",
@@ -23,8 +23,8 @@ const styles = theme => createStyles({
     textTransform: "uppercase",
     letterSpacing: theme.spacing(2)
   },
-  btn: {
-    margin: theme.spacing(8),
+  mb: {
+    marginBottom: theme.spacing(6),
   },
   btnIcon: {
     marginRight: theme.spacing(1),
@@ -32,6 +32,9 @@ const styles = theme => createStyles({
   gridItem: {
     marginRight: theme.spacing(1),
     marginLeft: theme.spacing(1)
+  },
+  grid: {
+    margin: theme.spacing(4),
   }
 });
 
@@ -68,11 +71,15 @@ class Top extends React.Component<Props, State> {
         <Typography className={classes.subtitle}>
           power point karaoke
         </Typography>
+        <Typography variant="subtitle1" className={classes.mb}>
+          ランダムに出てくる画像を使って即興でプレゼンをするパワポカラオケができるサイトです！
+        </Typography>
         <Grid
           container
           direction="row"
           justify="center"
           alignItems="center"
+          className={classes.grid}
         >
           <Grid>
             <Typography variant="h6">
@@ -104,7 +111,7 @@ class Top extends React.Component<Props, State> {
           variant="contained"
           color="primary"
           component={Link}
-          className={classes.btn}
+          className={classes.mb}
           to={{
             pathname: '/slide',
             state: {
