@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, RouteComponentProps} from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -9,9 +9,10 @@ import {Slideshow} from "@material-ui/icons";
 
 interface State {
   slideNum: number,
+  isError: boolean
 }
 
-interface Props extends WithStyles<typeof styles>{}
+interface Props extends WithStyles<typeof styles> {}
 
 const styles = theme => createStyles({
   subtitle: {
@@ -38,12 +39,15 @@ const styles = theme => createStyles({
   }
 });
 
-class Top extends React.Component<Props, State> {
+class Top extends React.Component<RouteComponentProps<Props>, State> {
+
   constructor(props) {
     super(props);
     this.state = {
       slideNum: 3,
+      isError: this.props.location.state !== undefined,
     }
+    console.log(this.props)
   }
 
   handleChange (event: any) {
@@ -107,6 +111,7 @@ class Top extends React.Component<Props, State> {
             </Typography>
           </Grid>
         </Grid>
+        {this.state.isError ? <div>エラーが発生しました。</div> : ''}
         <Button
           variant="contained"
           color="primary"

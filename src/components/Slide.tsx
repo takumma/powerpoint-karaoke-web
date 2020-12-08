@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios, {AxiosResponse} from 'axios';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 interface State {
   slideNum: number;
@@ -33,16 +33,19 @@ class Slide extends Component<RouteComponentProps, State> {
         }
       })
       .then((res: AxiosResponse) => {
-        const imgs: string[] = [];
+        const images: string[] = [];
         const windowWidth: string = window.innerWidth.toString();
         const windowHeight: string = window.innerHeight.toString();
 
         res.data.forEach((d) => {
-          imgs.push(d.urls.raw + '&fit=max&w=' + windowWidth + '&h=' + windowHeight);
+          images.push(d.urls.raw + '&fit=max&w=' + windowWidth + '&h=' + windowHeight);
         })
         this.setState({
-          images: imgs,
+          images: images,
         })
+      },
+      () => {
+        this.props.history.push('/', {isError: true});
       });
   }
 
@@ -79,4 +82,4 @@ class Slide extends Component<RouteComponentProps, State> {
 
 }
 
-export default Slide;
+export default withRouter(Slide);
