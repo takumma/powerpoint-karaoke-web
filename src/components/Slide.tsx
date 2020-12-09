@@ -19,13 +19,15 @@ class Slide extends Component<RouteComponentProps, State> {
       page: 0,
       show: false,
     }
+    console.log(process.env.PUBLIC_URL)
+    console.log(process.env.REACT_APP_BASEURL)
     this.getSlidePictures().then();
   }
 
   async getSlidePictures() {
-    const BASE_URL: string = process.env.REACT_APP_BASEURL!;
+    const UNSPLASH_BASE_URL: string = process.env.REACT_APP_UNSPLASH_BASE_URL!;
     const ACCESS_KEY: string = process.env.REACT_APP_UNSPLASH_ACCESS_KEY!;
-    const url = BASE_URL + '/photos/random?count=' + this.state.slideNum;
+    const url = UNSPLASH_BASE_URL + '/photos/random?count=' + this.state.slideNum;
 
     const imageUrls: string[] = [];
 
