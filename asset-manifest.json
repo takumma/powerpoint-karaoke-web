@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "./static/css/main.a0a50d61.chunk.css",
-    "main.js": "./static/js/main.2d92d7e1.chunk.js",
-    "main.js.map": "./static/js/main.2d92d7e1.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.1b45a539.js",
-    "runtime-main.js.map": "./static/js/runtime-main.1b45a539.js.map",
-    "static/js/2.64d5d94b.chunk.js": "./static/js/2.64d5d94b.chunk.js",
-    "static/js/2.64d5d94b.chunk.js.map": "./static/js/2.64d5d94b.chunk.js.map",
-    "static/js/3.aa032a29.chunk.js": "./static/js/3.aa032a29.chunk.js",
-    "static/js/3.aa032a29.chunk.js.map": "./static/js/3.aa032a29.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/main.a0a50d61.chunk.css.map": "./static/css/main.a0a50d61.chunk.css.map",
-    "static/js/2.64d5d94b.chunk.js.LICENSE.txt": "./static/js/2.64d5d94b.chunk.js.LICENSE.txt"
+    "main.css": "/powerpoint-karaoke-web/static/css/main.a0a50d61.chunk.css",
+    "main.js": "/powerpoint-karaoke-web/static/js/main.f6ba77fb.chunk.js",
+    "main.js.map": "/powerpoint-karaoke-web/static/js/main.f6ba77fb.chunk.js.map",
+    "runtime-main.js": "/powerpoint-karaoke-web/static/js/runtime-main.7a29ca35.js",
+    "runtime-main.js.map": "/powerpoint-karaoke-web/static/js/runtime-main.7a29ca35.js.map",
+    "static/js/2.64d5d94b.chunk.js": "/powerpoint-karaoke-web/static/js/2.64d5d94b.chunk.js",
+    "static/js/2.64d5d94b.chunk.js.map": "/powerpoint-karaoke-web/static/js/2.64d5d94b.chunk.js.map",
+    "static/js/3.aa032a29.chunk.js": "/powerpoint-karaoke-web/static/js/3.aa032a29.chunk.js",
+    "static/js/3.aa032a29.chunk.js.map": "/powerpoint-karaoke-web/static/js/3.aa032a29.chunk.js.map",
+    "index.html": "/powerpoint-karaoke-web/index.html",
+    "static/css/main.a0a50d61.chunk.css.map": "/powerpoint-karaoke-web/static/css/main.a0a50d61.chunk.css.map",
+    "static/js/2.64d5d94b.chunk.js.LICENSE.txt": "/powerpoint-karaoke-web/static/js/2.64d5d94b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.1b45a539.js",
+    "static/js/runtime-main.7a29ca35.js",
     "static/js/2.64d5d94b.chunk.js",
     "static/css/main.a0a50d61.chunk.css",
-    "static/js/main.2d92d7e1.chunk.js"
+    "static/js/main.f6ba77fb.chunk.js"
   ]
 }
