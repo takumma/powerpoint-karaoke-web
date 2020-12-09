@@ -28,10 +28,18 @@ jobs:
       run: npm install
 
     - name: build
-      run: npm run build-production
+      env:
+        REACT_APP_UNSPLASH_BASE_URL: ${{ secrets.REACT_APP_UNSPLASH_BASE_URL }}
+        REACT_APP_UNSPLASH_ACCESS_KEY: ${{ secrets.REACT_APP_UNSPLASH_ACCESS_KEY }}
+        REACT_APP_UNSPLASH_SECRET_KEY: ${{ secrets.REACT_APP_UNSPLASH_SECRET_KEY }}
+      run: npm run build
 
     - name: deploy
       uses: peaceiris/actions-gh-pages@v3
+      env:
+        REACT_APP_UNSPLASH_BASE_URL: ${{ secrets.REACT_APP_UNSPLASH_BASE_URL }}
+        REACT_APP_UNSPLASH_ACCESS_KEY: ${{ secrets.REACT_APP_UNSPLASH_ACCESS_KEY }}
+        REACT_APP_UNSPLASH_SECRET_KEY: ${{ secrets.REACT_APP_UNSPLASH_SECRET_KEY }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
