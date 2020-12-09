@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/powerpoint-karaoke-web/static/css/main.a0a50d61.chunk.css",
-    "main.js": "/powerpoint-karaoke-web/static/js/main.f6ba77fb.chunk.js",
-    "main.js.map": "/powerpoint-karaoke-web/static/js/main.f6ba77fb.chunk.js.map",
+    "main.js": "/powerpoint-karaoke-web/static/js/main.fe617ae8.chunk.js",
+    "main.js.map": "/powerpoint-karaoke-web/static/js/main.fe617ae8.chunk.js.map",
     "runtime-main.js": "/powerpoint-karaoke-web/static/js/runtime-main.7a29ca35.js",
     "runtime-main.js.map": "/powerpoint-karaoke-web/static/js/runtime-main.7a29ca35.js.map",
     "static/js/2.64d5d94b.chunk.js": "/powerpoint-karaoke-web/static/js/2.64d5d94b.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.7a29ca35.js",
     "static/js/2.64d5d94b.chunk.js",
     "static/css/main.a0a50d61.chunk.css",
-    "static/js/main.f6ba77fb.chunk.js"
+    "static/js/main.fe617ae8.chunk.js"
   ]
 }
