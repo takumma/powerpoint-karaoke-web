@@ -19,8 +19,6 @@ class Slide extends Component<RouteComponentProps, State> {
       page: 0,
       show: false,
     }
-    console.log(process.env.PUBLIC_URL)
-    console.log(process.env.REACT_APP_BASEURL)
     this.getSlidePictures().then();
   }
 
