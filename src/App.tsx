@@ -25,7 +25,7 @@ class App extends React.Component<{}, {}> {
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
-          <Router>
+          <Router basename={process.env.PUBLIC_URL}>
             <div>
               <Route exact path="/" component={Top}/>
               <Route exact path="/slide" component={Slide}/>
