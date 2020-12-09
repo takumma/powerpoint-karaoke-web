@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import axios, {AxiosResponse} from 'axios';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
 
 interface State {
   slideNum: number;
   images: string[];
   page: number;
+  show: boolean;
 }
 
 class Slide extends Component<RouteComponentProps, State> {
@@ -16,6 +17,7 @@ class Slide extends Component<RouteComponentProps, State> {
       slideNum: this.props.location.state.slideNum,
       images: [],
       page: 0,
+      show: false,
     }
     this.getSlidePictures().then();
   }
@@ -33,24 +35,33 @@ class Slide extends Component<RouteComponentProps, State> {
           Authorization: "Client-ID " + ACCESS_KEY,
         }
       })
-      .then((res: AxiosResponse) => {
-        const windowWidth: string = window.innerWidth.toString();
-        const windowHeight: string = window.innerHeight.toString();
+      .then(
+        (res: AxiosResponse) => {
+          const windowWidth: string = window.innerWidth.toString();
+          const windowHeight: string = window.innerHeight.toString();
 
-        res.data.forEach((d) => {
-          imageUrls.push(d.urls.raw + '&fit=max&w=' + windowWidth + '&h=' + windowHeight);
+          res.data.forEach((d) => {
+            imageUrls.push(d.urls.raw + '&fit=max&w=' + windowWidth + '&h=' + windowHeight);
+          });
+        },
+        () => {
+          this.props.history.push('/', {isError: true});
         });
-        this.setState({
-          images: imageUrls
-        })
-      },
-      () => {
-        this.props.history.push('/', {isError: true});
-      });
 
-    imageUrls.forEach(imageUrl => {
+    let done = 0;
+
+    imageUrls.forEach((imageUrl) => {
       const img = new Image();
       img.src = imageUrl;
+      img.onload = () => {
+        done++;
+        if(done === imageUrls.length) {
+          this.setState({
+            show: true,
+            images: imageUrls
+          })
+        }
+      }
     });
   }
 
@@ -73,6 +84,12 @@ class Slide extends Component<RouteComponentProps, State> {
   }
 
   render() {
+    if(!this.state.show) {
+      return (
+        <div className="App-container">waiting...</div>
+      )
+    }
+
     return (
       <div
         className="App-container"
