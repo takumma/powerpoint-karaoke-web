@@ -4,7 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {Button, Divider, Grid, ListItemText, Typography} from '@material-ui/core';
-import { createStyles, withStyles, WithStyles } from "@material-ui/core/styles";
+import {createStyles, withStyles, WithStyles} from "@material-ui/core/styles";
 import {Slideshow} from "@material-ui/icons";
 
 interface State {
@@ -12,7 +12,8 @@ interface State {
   isError: boolean
 }
 
-interface Props extends WithStyles<typeof styles> {}
+interface Props extends WithStyles<typeof styles> {
+}
 
 const styles = theme => createStyles({
   subtitle: {
@@ -49,27 +50,27 @@ class Top extends React.Component<RouteComponentProps<Props>, State> {
     }
   }
 
-  handleChange (event: any) {
+  handleChange(event: any) {
     this.setState({
       slideNum: event.target.value as number,
     })
   }
 
   itemText(num: number): string {
-    return num.toString().replace( /[0-9]/g, (s) =>  {
+    return num.toString().replace(/[0-9]/g, (s) => {
       return String.fromCharCode(s.charCodeAt(0) + 65248);
     });
   }
 
   render() {
-    const numList: Array<number> = Array(18).fill(0).map((v,i) => i + 3);
-    const { classes } = this.props;
+    const numList: Array<number> = Array(18).fill(0).map((v, i) => i + 3);
+    const {classes} = this.props;
 
     return (
       <div className="App-container">
         <Typography variant="h2">
           パワポカラオケ
-          <Divider />
+          <Divider/>
         </Typography>
         <Typography className={classes.subtitle}>
           power point karaoke
@@ -131,4 +132,4 @@ class Top extends React.Component<RouteComponentProps<Props>, State> {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Top);
+export default withStyles(styles, {withTheme: true})(Top);

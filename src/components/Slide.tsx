@@ -55,7 +55,7 @@ class Slide extends Component<RouteComponentProps, State> {
       img.src = imageUrl;
       img.onload = () => {
         done++;
-        if(done === imageUrls.length) {
+        if (done === imageUrls.length) {
           this.setState({
             show: true,
             images: imageUrls
@@ -84,7 +84,7 @@ class Slide extends Component<RouteComponentProps, State> {
   }
 
   render() {
-    if(!this.state.show) {
+    if (!this.state.show) {
       return (
         <div className="App-container">waiting...</div>
       )
